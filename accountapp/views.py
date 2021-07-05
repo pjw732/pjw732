@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def hello_world(request):
-    return HttpResponse('Hello World!')     # alt+enter 이름이 같으면 모듈 가져옴
+    return render(request, 'accountapp/hello_world.html')     # alt+enter 이름이 같으면 모듈 가져옴
