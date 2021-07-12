@@ -14,8 +14,12 @@ def hello_world(request):
         new_hello_world.text = temp
         new_hello_world.save()
 
+        hello_world_list = HelloWorld.objects.all()
+
         return render(request, 'accountapp/hello_world.html',
-                      context={'new_hello_world': new_hello_world})     # alt+enter 이름이 같으면 모듈 가져옴
+                      context={'hello_world_list': hello_world_list})  # alt+enter 이름이 같으면 모듈 가져옴
+
     else:
+        hello_world_list = HelloWorld.objects.all()
         return render(request, 'accountapp/hello_world.html',
-                      context={'text': 'POST METHOD!'})
+                      context={'hello_world_list': hello_world_list})
