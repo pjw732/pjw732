@@ -10,7 +10,7 @@ RUN echo "SECRET_KEY=django-insecure-gwncn-2alj%l4@0&b9o8j^tyev3l-%)zm&vbljglfvg
 
 RUN pip install -r requirements.txt
 
-RUN pip installl gunicorn
+RUN pip install gunicorn
 
 RUN python manage.py migrate
 
