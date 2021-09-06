@@ -10,6 +10,8 @@ RUN echo "SECRET_KEY=django-insecure-gwncn-2alj%l4@0&b9o8j^tyev3l-%)zm&vbljglfvg
 
 RUN pip install -r requirements.txt
 
+RUN python manage.py migrate
+
 EXPOSE 8000
 
-CMD ['python', 'manage.py', 'runserver', '0.0.0.0:9000']
+CMD ["python", "manage.py", "runserver", "0.0.0.0:9000"]
