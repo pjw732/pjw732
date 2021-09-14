@@ -2,6 +2,8 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
+RUN echo "aaa"
+
 RUN git clone https://github.com/pjw732/pjw732.git
 
 WORKDIR /home/pjw732/
@@ -12,10 +14,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
-RUN python manage.py migrate
-
-RUN python manage.py collectstatic
+RUN pip install mysqlclient
 
 EXPOSE 8000
 
-CMD ["gunicorn", "practice01.wsgi", "--bind", "0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=practice01.settings.deploy && python manage.py migrate --settings=practice01.settings.deploy && gunicorn --env DJANGO-SETTINGS-MODULE=practice01.settings.deploy practice01.wsgi --bind 0.0.0.0:8000"]
