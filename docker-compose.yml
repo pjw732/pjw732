@@ -9,7 +9,7 @@ services:
     networks:
       - practice_network
     volumes:
-      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
+      - /home/pjw732/nginx.conf:/etc/nginx/nginx.conf
       - static:/data/static/
       - media:/data/media/
 
@@ -21,6 +21,18 @@ services:
       - static:/home/pjw732/staticfiles/
       - media:/home/pjw732/media/
 
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - practice_network
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password1234
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: password1234
+
 
 networks:
   practice_network:
@@ -28,3 +40,4 @@ networks:
 volumes:
   static:
   media:
+  mariadb:
