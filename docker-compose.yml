@@ -9,7 +9,7 @@ services:
     networks:
       - practice_network
     volumes:
-      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
+      - /home/pjw732/nginx.conf:/etc/nginx/nginx.conf
       - static:/data/static/
       - media:/data/media/
 
