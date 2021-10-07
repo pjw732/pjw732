@@ -5,13 +5,19 @@ services:
   nginx:
     image: nginx:1.19.5
     ports:
-      - 80:80
+      - mode : host
+        protocol: tcp
+        target: 80
+        published: 80
     networks:
       - practice_network
     volumes:
-      - /home/pjw732/nginx.conf:/etc/nginx/nginx.conf
+      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
       - static:/data/static/
       - media:/data/media/
+      - log:/var/log/nginx/
+    secrets:
+      - NGINX_AUTH
 
   django:
     image: practice:5
@@ -49,6 +55,7 @@ volumes:
   static:
   media:
   mariadb:
+  log:
 
 secrets:
   DJANGO_SECRET_KEY:
@@ -58,4 +65,6 @@ secrets:
   MARIADB_USER:
     external: true
   MARIADB_PASSWORD:
+    external: true
+  NGINX_AUTH:
     external: true

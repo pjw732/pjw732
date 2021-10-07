@@ -3,7 +3,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN echo "aaaabbbb"
+RUN echo "dsfom"
 
 RUN git clone https://github.com/pjw732/pjw732.git
 
@@ -19,4 +19,4 @@ RUN pip install mysqlclient
 
 EXPOSE 8000
 
-CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=practice01.settings.deploy && python manage.py migrate --settings=practice01.settings.deploy && gunicorn --env DJANGO-SETTINGS-MODULE=practice01.settings.deploy practice01.wsgi --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=practice01.settings.deploy && python manage.py migrate --settings=practice01.settings.deploy && gunicorn --env DJANGO_SETTINGS_MODULE=practice01.settings.deploy practice01.wsgi --bind 0.0.0.0:8000"]
